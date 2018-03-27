@@ -41,7 +41,13 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
         TextView mBedrooms=(TextView) row.findViewById(R.id.textView2);
         mBedrooms.setText(property.getmBedrooms()+"");
 
-
+        Button button1=(Button) row.findViewById(R.id.button);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("TAG", "button click");
+            }
+        });
 
         return row;
     }
