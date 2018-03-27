@@ -31,7 +31,12 @@ public class PropertyTable {
         values.put(KEY_BEDROOMS,p.getmBedrooms());
         db.insert(TABLE_NAME,null,values);
     }
-    public static void init(){
+    public static void update(SQLiteDatabase db,Property p){
+        ContentValues values=new ContentValues();
+        values.put(KEY_ADDRESS,p.getmAdress());
+        values.put(KEY_PRICE,p.getmPrice());
+        values.put(KEY_BEDROOMS,p.getmBedrooms());
+        db.update(TABLE_NAME,values,KEY_PROPERTY_ID+"= ?",new String[]{""+p.getmPropertyID()});
 
     }
     public static ArrayList<Property> selectAll(SQLiteDatabase db){

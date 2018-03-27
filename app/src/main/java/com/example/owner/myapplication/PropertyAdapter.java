@@ -4,11 +4,14 @@ import android.app.Service;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -33,10 +36,11 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
         mAddress.setText(property.getmAdress());
 
         TextView mPrice=(TextView) row.findViewById(R.id.textView1);
-        mPrice.setText(property.getmPrice());
+        mPrice.setText(property.getmPrice()+"");
 
         TextView mBedrooms=(TextView) row.findViewById(R.id.textView2);
-        mBedrooms.setText(property.getmBedrooms());
+        mBedrooms.setText(property.getmBedrooms()+"");
+
 
 
         return row;
