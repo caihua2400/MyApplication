@@ -44,25 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        /*final ArrayList<String> arrayList=new ArrayList<>();
-        arrayList.add("apple");
-        arrayList.add("orange");
-        arrayList.add("grape");
-        arrayList.add("banana");
-        arrayList.add("blackberry");
-        ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,arrayList);
-        ListView listView=findViewById(R.id.list_view);
+        ListView listView=(ListView) findViewById(R.id.list_view);
+        PropertyAdapter arrayAdapter=new PropertyAdapter(MainActivity.this,R.layout.property_item,properties);
         listView.setAdapter(arrayAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
-                builder.setMessage(arrayList.get(i)).setTitle("Item taped");
-                AlertDialog dialog=builder.create();
-                dialog.show();
-                Toast.makeText(MainActivity.this,arrayList.get(i),LENGTH_SHORT).show();
 
-            }
-        });*/
     }
 }

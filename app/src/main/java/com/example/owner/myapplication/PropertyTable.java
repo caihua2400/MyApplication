@@ -31,6 +31,9 @@ public class PropertyTable {
         values.put(KEY_BEDROOMS,p.getmBedrooms());
         db.insert(TABLE_NAME,null,values);
     }
+    public static void init(){
+
+    }
     public static ArrayList<Property> selectAll(SQLiteDatabase db){
         ArrayList<Property> results=new ArrayList<Property>();
         Cursor c= db.query(TABLE_NAME,null,null,null,null,null,null);
@@ -43,6 +46,11 @@ public class PropertyTable {
             }
         }
         return results;
+    }
+
+    public static Property getPropertyById(SQLiteDatabase db,int id){
+        Cursor c=db.query(TABLE_NAME,null,KEY_PROPERTY_ID+"="+id,null,null,null,null);
+        return createFromCursor(c);
     }
 
     private static Property createFromCursor(Cursor c) {
