@@ -3,6 +3,7 @@ package com.example.owner.myapplication;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,10 @@ public class PropertyTable {
         values.put(KEY_BEDROOMS,p.getmBedrooms());
         db.update(TABLE_NAME,values,KEY_PROPERTY_ID+"= ?",new String[]{""+p.getmPropertyID()});
 
+    }
+    public static void delete(SQLiteDatabase db, Property p){
+            db.delete(TABLE_NAME,KEY_PROPERTY_ID+"= ?",new String[]{""+p.getmPropertyID()});
+            //arrayAdapter.notifyDataSetChanged();
     }
     public static ArrayList<Property> selectAll(SQLiteDatabase db){
         ArrayList<Property> results=new ArrayList<Property>();

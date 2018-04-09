@@ -1,6 +1,7 @@
 package com.example.owner.myapplication;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,12 +23,14 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static SQLiteDatabase db;
+   // public static PropertyAdapter arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         PropertyDatabase dbConnection=new PropertyDatabase(this);
-        final SQLiteDatabase db= dbConnection.openDatabase();
+        db= dbConnection.openDatabase();
         Log.d("createTable",PropertyTable.CREATE_STATEMENT);
         /*Property property1 = new Property();
         property1.setmAdress("742 Evergreen Terrace");
@@ -40,16 +43,21 @@ public class MainActivity extends AppCompatActivity {
         PropertyTable.insert(db, property1);
         PropertyTable.insert(db, property2);*/
         final ArrayList<Property> properties = PropertyTable.selectAll(db);
-        for (Property p: properties
-             ) {
-            Log.d("Mainactivity",p.getmAdress());
-        }
+        Button buttonAdd=findViewById(R.id.button_add);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,AddItemActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 
 
         ListView listView=(ListView) findViewById(R.id.list_view);
-        final PropertyAdapter arrayAdapter=new PropertyAdapter(MainActivity.this,R.layout.property_item,properties);
+        final PropertyAdapter arrayAdapter=new PropertyAdapter(MainActivity.this,R.layout.property_item,properties, db);
+        arrayAdapter.setAdapter(arrayAdapter);
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
