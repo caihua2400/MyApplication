@@ -31,17 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         PropertyDatabase dbConnection=new PropertyDatabase(this);
         db= dbConnection.openDatabase();
-        Log.d("createTable",PropertyTable.CREATE_STATEMENT);
-        /*Property property1 = new Property();
-        property1.setmAdress("742 Evergreen Terrace");
-        property1.setmBedrooms(4);
-        property1.setmPrice(250000);
-        Property property2 = new Property();
-        property2.setmAdress("4352 Wisteria Lane");
-        property2.setmBedrooms(5);
-        property2.setmPrice(500000);
-        PropertyTable.insert(db, property1);
-        PropertyTable.insert(db, property2);*/
+
         final ArrayList<Property> properties = PropertyTable.selectAll(db);
         Button buttonAdd=findViewById(R.id.button_add);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +41,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        Button button_turnTo_bought= findViewById(R.id.button_turnTo_bought);
+        button_turnTo_bought.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_2=new Intent(MainActivity.this,BoughtListActivity.class);
+                startActivity(intent_2);
+            }
+        });
 
 
 

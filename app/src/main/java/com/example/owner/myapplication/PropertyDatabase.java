@@ -15,7 +15,7 @@ public class PropertyDatabase {
     //name of the database
     private static final String DATABASE_NAME="PropertyDatabase";
     //database version increment it every time you upgrade your database
-    private static final int DATABASE_VERSION=3;
+    private static final int DATABASE_VERSION=4;
     //connection to the database
     private SQLiteDatabase mDb;
     private DatabaseHelper mDbHelper;
@@ -44,12 +44,14 @@ public class PropertyDatabase {
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             sqLiteDatabase.execSQL(PropertyTable.CREATE_STATEMENT);
+            sqLiteDatabase.execSQL(PropertyTable.CREATE_STATEMENT_BOUGHT);
             Log.d(TAG,"database created");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PropertyTable.TABLE_NAME);
+            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " +PropertyTable.TABLE_NAME_BOUGHT);
             onCreate(sqLiteDatabase);
             Log.d(TAG,"sqlight upgraded");
         }

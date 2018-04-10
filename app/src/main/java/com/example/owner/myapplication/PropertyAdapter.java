@@ -29,7 +29,7 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
         super(context, resource, objects);
         this.mLayoutResourceId=resource;
         this.databaseHandler=databaseHandler;
-        //this.propertyAdapter=propertyAdapter;
+
     }
     public void setAdapter(PropertyAdapter  pAdapter){
         this.propertyAdapter=pAdapter;
@@ -56,7 +56,7 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
             public void onClick(View view) {
                 Log.d("PropertyAdapter","Button Clicked");
                 PropertyTable.delete(databaseHandler,property);
-
+                PropertyTable.insert_bought(databaseHandler,property);
                 remove(property);
 
 

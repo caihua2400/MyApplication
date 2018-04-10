@@ -17,9 +17,18 @@ public class PropertyTable {
     public static final String KEY_ADDRESS="address";
     public static final String KEY_PRICE="price";
     public static final String KEY_BEDROOMS="bedrooms";
+    public static final String TABLE_NAME_BOUGHT="property_bought";
     public static final String CREATE_STATEMENT="CREATE TABLE"
             +" "
             +TABLE_NAME
+            + " (" + KEY_PROPERTY_ID + " integer primary key autoincrement, "
+            + KEY_ADDRESS + " string not null, "
+            + KEY_PRICE + " int not null, "
+            + KEY_BEDROOMS + " string not null "
+            +");";
+    public static final String CREATE_STATEMENT_BOUGHT="CREATE TABLE"
+            +" "
+            +TABLE_NAME_BOUGHT
             + " (" + KEY_PROPERTY_ID + " integer primary key autoincrement, "
             + KEY_ADDRESS + " string not null, "
             + KEY_PRICE + " int not null, "
@@ -31,6 +40,13 @@ public class PropertyTable {
         values.put(KEY_PRICE,p.getmPrice());
         values.put(KEY_BEDROOMS,p.getmBedrooms());
         db.insert(TABLE_NAME,null,values);
+    }
+    public static void insert_bought(SQLiteDatabase db,Property p){
+        ContentValues values=new ContentValues();
+        values.put(KEY_ADDRESS,p.getmAdress());
+        values.put(KEY_PRICE,p.getmPrice());
+        values.put(KEY_BEDROOMS,p.getmBedrooms());
+        db.insert(TABLE_NAME_BOUGHT,null,values);
     }
     public static void update(SQLiteDatabase db,Property p){
         ContentValues values=new ContentValues();
@@ -47,6 +63,19 @@ public class PropertyTable {
     public static ArrayList<Property> selectAll(SQLiteDatabase db){
         ArrayList<Property> results=new ArrayList<Property>();
         Cursor c= db.query(TABLE_NAME,null,null,null,null,null,null);
+        if(c!=null){
+            c.moveToNext();
+            while(!c.isAfterLast()){
+                Property p=createFromCursor(c);
+                results.add(p);
+                c.moveToNext();
+            }
+        }
+        return results;
+    }
+    public static ArrayList<Property> selectAll_bought(SQLiteDatabase db){
+        ArrayList<Property> results=new ArrayList<Property>();
+        Cursor c= db.query(TABLE_NAME_BOUGHT,null,null,null,null,null,null);
         if(c!=null){
             c.moveToNext();
             while(!c.isAfterLast()){
