@@ -46,6 +46,7 @@ public class AddItemActivity extends AppCompatActivity {
                 p.setmAdress(Address_input.getText().toString());
                 p.setmPrice(Integer.parseInt(Price_input.getText().toString()));
                 p.setmBedrooms(Integer.parseInt(Bedroom_input.getText().toString()));
+                p.setmPath(mCurrentPhotoPath);
                 PropertyTable.insert(db,p);
                 Toast.makeText(AddItemActivity.this,"create success",Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(AddItemActivity.this,MainActivity.class);

@@ -8,10 +8,12 @@ public class Property {
     private int mPropertyID;
     private String mAdress;
     private int mPrice, mBedrooms;
+    private String mPath;
 
     public Property() {
 
     }
+
 
     public int getmPropertyID() {
         return mPropertyID;
@@ -43,5 +45,13 @@ public class Property {
 
     public void setmBedrooms(int mBedrooms) {
         this.mBedrooms = mBedrooms;
+    }
+
+    public String getmPath() {
+        return mPath;
+    }
+
+    public void setmPath(String mPath) {
+        this.mPath = mPath;
     }
 }

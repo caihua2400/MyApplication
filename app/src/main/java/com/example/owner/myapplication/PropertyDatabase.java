@@ -15,7 +15,7 @@ public class PropertyDatabase {
     //name of the database
     private static final String DATABASE_NAME="PropertyDatabase";
     //database version increment it every time you upgrade your database
-    private static final int DATABASE_VERSION=4;
+    private static final int DATABASE_VERSION=6;
     //connection to the database
     private SQLiteDatabase mDb;
     private DatabaseHelper mDbHelper;

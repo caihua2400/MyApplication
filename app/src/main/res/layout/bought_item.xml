@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView_bought"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"/>
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView_bought"
+            android:layout_width="247dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"/>
 
 
 
-    <TextView
-        android:id="@+id/textView1_bought"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/textView1_bought"
+            android:layout_width="247dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"/>
 
-    <TextView
-        android:id="@+id/textView2_bought"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/textView2_bought"
+            android:layout_width="247dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:srcCompat="@android:drawable/alert_dark_frame"
+        android:layout_weight="1"
+        android:id="@+id/image_bought_item"/>
+
+
 
 </LinearLayout>
